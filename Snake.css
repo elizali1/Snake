@@ -2,3 +2,35 @@ body {
     font-family: fantasy;
     background-color: lightpink;
 }
+h1 {
+    text-align: center;
+    color: rgb(240, 65, 193);
+    font-weight: bolder;
+    font-size: 47px;
+}
+#leaderboard {
+    font-size: 22px;
+    position:absolute;
+    left: 2%;
+}
+#leaderboard div{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#score {
+    font-family: fantasy;
+    font-weight: bolder;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+}
+#game {
+    background-color: white;
+    width: 500px;
+    height: 500px;
+    border: 5px solid lavenderblush;
+    margin: auto;
+}
