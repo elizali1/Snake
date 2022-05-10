@@ -8,3 +8,4 @@
  Day three: Add extra touches, debug
  Day four: trials
  Day five: last finishing touches
+ Day six: ---testing
