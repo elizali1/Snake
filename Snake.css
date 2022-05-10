@@ -1,6 +1,7 @@
 body {
     font-family: fantasy;
     background-color: lightpink;
+    text-align: center;
 }
 h1 {
     text-align: center;
@@ -8,12 +9,12 @@ h1 {
     font-weight: bolder;
     font-size: 47px;
 }
-#leaderboard {
+#loserboard {
     font-size: 22px;
     position:absolute;
     left: 2%;
 }
-#leaderboard div{
+#loserboard div{
     position: absolute;
     left: 0px;
     top: 0px;
@@ -29,8 +30,61 @@ h1 {
 }
 #game {
     background-color: white;
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     border: 5px solid lavenderblush;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+#game div {
+    width: 20px;
+    height: 20px;
+    border: 1px solid lavenderblush;
+    box-sizing: border-box;
+}
+
+.snake {
+    background: pink;
+}
+
+.apple {
+    background: red;
+    border-radius: 100%;
+}
+#up {
+    font-size: 70px;
+    border-radius: 100%;
+    background-color: lightpink;
+    border: solid lightpink;
+}
+#down {
+    font-size: 70px;
+    border-radius: 100%;
+    background-color: lightpink;
+    border: solid lightpink;
+}
+#left {
+    font-size: 70px;
+    border-radius: 100%;
+    background-color: lightpink;
+    border: solid lightpink;
+}
+#right {
+    font-size: 70px;
+    border-radius: 100%;
+    background-color: lightpink;
+    border: solid lightpink;
+}
+
+#name {
+    font-size: 20px;
+    margin: 5px;
+}
+
+#instructions {
+    font-size: 25px;
+    position: absolute;
+    right:5%;
+    top: 105px;
 }
