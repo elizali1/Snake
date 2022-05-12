@@ -12,7 +12,7 @@ h1 {
 #loserboard {
     font-size: 22px;
     position:absolute;
-    left: 2%;
+    left: 10%;
 }
 #loserboard div{
     position: absolute;
@@ -81,10 +81,20 @@ h1 {
     font-size: 20px;
     margin: 5px;
 }
-
+h4 {
+    font-size: 25px;
+    position: absolute;
+    right:3%;
+    top: 105px;
+    width: 400px;
+}
 #instructions {
     font-size: 25px;
     position: absolute;
-    right:5%;
-    top: 105px;
+    right:3%;
+    width: 400px;
+    top: 200px;
+}
+ul {
+    list-style-type: none;
 }

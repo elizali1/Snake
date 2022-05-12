@@ -1,7 +1,7 @@
 console.log('testing')
 //declare all variables
 let game = document.querySelector('#game');
-let leaderBoard = document.querySelector('#leaderboard')
+let loserBoard = document.querySelector('#names')
 let scoreBoard = document.querySelector('#score');
 let newGame = document.querySelector('#newGame')
 let up = document.querySelector('#up')
@@ -11,7 +11,7 @@ let right = document.querySelector('#right')
 let width = 20;
 let currentIndex = 0;
 let appleIndex = 0;
-let currentSnake = [2,1,0];
+let Snake = [2,1,0];
 let direction = 1;
 let score = 0;
 let speed = 1.0;
@@ -25,10 +25,13 @@ function userInput() {
     if (person == null || person == "") {
       text = "Good luck!";
     } else {
-      text = "Good luck " + person + "!";
+      text = "Good luck!";
     }
     document.getElementById("name").innerHTML = text;
     start();
+    var li = document.createElement('li');
+    li.innerHTML = person;
+    loserBoard.appendChild(li);
   }
 
 //"DOMContentLoaded" runs when website is loaded(game board creation)
@@ -48,21 +51,17 @@ function start() {
     applePosition(grid);
     direction = 1;
     scoreBoard.innerHTML = score;
-    intervalTime = 500;
-    currentSnake = [2,1,0];
+    intervalTime = 500; //ms
+    Snake = [2,1,0]; //right would = [3,2,1](1 added for right), down [22,2,1] (added 20 bc that is width of grid)
     currentIndex = 0;
-    currentSnake.forEach((index) => grid[index].classList.add("snake"));
+    Snake.forEach((index) => grid[index].classList.add("snake"));
     interval = setInterval(moveOutcome, intervalTime);
-}
+  }
 
 function moveOutcome() {
     let grid = document.querySelectorAll('#game div');
     if (checkForHits(grid)) {
         alert("HAHA! LOSER!");
-        // popup.style.display = 'flex';
-       //trying to add name to leaderboard once game over--leaderboard or failed players..
-        // var li = person;
-        // document.getElementById("names").appendChild(li);
         return clearInterval(interval);
     } else {
         moveSnake(grid);
@@ -70,30 +69,35 @@ function moveOutcome() {
 }
 function checkForHits(grid) {
     if (
-        (currentSnake[0] + width >= width * width && direction ===width) ||
-        (currentSnake[0] % width === width - 1 && direction ===1) ||
-        (currentSnake[0] % width === 0 && direction === -1) ||
-        (currentSnake[0] - width <= 0 && direction === -width) ||
-        grid[currentSnake[0] + direction].classList.contains("snake")
-      ) {
-        return true;
+        (Snake[0] + width >= width * width && direction ===width) || 
+        //snake index + width(20) > 400 && direction(1||20) = width
+        (Snake[0] % width === width - 1 && direction ===1) ||
+        //snake / width = width-1 + direction(1||20) (right)
+        (Snake[0] % width === 0 && direction === -1) ||
+        //(^^ left)
+        (Snake[0] - width <= 0 && direction === -width) ||
+        //-width = -20//down
+        grid[Snake[0] + direction].classList.contains("snake")
+      ) // snake hits itself
+      {
+        return true; //hit
       } else {
         return false;
       }
 }
 function moveSnake(grid) {
-    let tail = currentSnake.pop();
+    let tail = Snake.pop(); //last square leaves so snake looks like its moving
     grid[tail].classList.remove("snake");
-    currentSnake.unshift(currentSnake[0] + direction);
+    Snake.unshift(Snake[0] + direction); //adds to head/beginning of snake
     eatApple(grid, tail);
-    grid[currentSnake[0]].classList.add("snake");
+    grid[Snake[0]].classList.add("snake");
 }
 //snake is treated like an array, .push tail(snake) to add one after each apple eaten
 function eatApple(grid, tail) {
-    if (grid[currentSnake[0]].classList.contains("apple")) {
-      grid[currentSnake[0]].classList.remove("apple");
+    if (grid[Snake[0]].classList.contains("apple")) {
+      grid[Snake[0]].classList.remove("apple");
       grid[tail].classList.add("snake");
-      currentSnake.push(tail);
+      Snake.push(tail);
       applePosition(grid);
       score+=10; //increase score by 10
       scoreBoard.textContent = score; //input score to scoreboard displayed on html
@@ -117,6 +121,8 @@ function eatApple(grid, tail) {
       userInput()
       scoreBoard.textContent = 0
   }
+
+
 
   //arrow buttons on screen
   const upBtn = document.getElementById('up');
