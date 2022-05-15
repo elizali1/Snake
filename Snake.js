@@ -33,7 +33,6 @@ function userInput() {
     li.innerHTML = person;
     loserBoard.appendChild(li);
   }
-
 //"DOMContentLoaded" runs when website is loaded(game board creation)
 document.addEventListener("DOMContentLoaded", function () {
     createBoard();
