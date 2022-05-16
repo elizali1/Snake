@@ -136,3 +136,19 @@ function eatApple(grid, tail) {
 
   //arrow keys functions linked to buttons
 
+  document.onkeydown = function (event) {
+    switch (event.keyCode) {
+       case 37:
+        (direction = -1);
+          break;
+       case 38:
+        (direction = -width);
+          break;
+       case 39:
+        (direction = 1);
+          break;
+       case 40:
+        (direction = +width);
+          break;
+    }
+ };
