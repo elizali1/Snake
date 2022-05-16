@@ -106,11 +106,14 @@ function eatApple(grid, tail) {
       applePosition(grid);
       score+=10; //increase score by 10
       scoreBoard.textContent = score; //input score to scoreboard displayed on html
+      if (score >=100) {
+        speed /=2
       clearInterval(interval);
       intervalTime = intervalTime * speed;
       interval = setInterval(moveOutcome, intervalTime);
     }
   }
+}
 
   //random apple placement along vertical axis using Math
   function applePosition(grid) {
