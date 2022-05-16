@@ -17,6 +17,8 @@ let score = 0;
 let speed = 1.0;
 let intervalTime = 0;
 let interval = 0;
+var audio = new Audio('game.mp3')
+var audio2 = new Audio('lose.mp3')
 
 //w3
 function userInput() {
@@ -55,12 +57,16 @@ function start() {
     currentIndex = 0;
     Snake.forEach((index) => grid[index].classList.add("snake"));
     interval = setInterval(moveOutcome, intervalTime);
+    audio.play();
+    audio.loop = true;
   }
 
 function moveOutcome() {
     let grid = document.querySelectorAll('#game div');
     if (checkForHits(grid)) {
+      audio2.play();
         alert("HAHA! LOSER!");
+        audio.pause();
         return clearInterval(interval);
     } else {
         moveSnake(grid);
